@@ -1,0 +1,9 @@
+npm install mongodb
+npm install mongoose --save
+
+
+// flask dep
+cs50
+Flask
+Flask-Session
+requests
