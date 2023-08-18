@@ -3,3 +3,4 @@ npm install mongodb
 npm install mongoose --save
     // mongoose -> ODM library (object document mapping library)
     // wraps mongoDB api
+ npm install express
