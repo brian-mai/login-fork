@@ -1,9 +1,5 @@
 npm install mongodb
+    // model communicates with db collections
 npm install mongoose --save
-
-
-// flask dep
-cs50
-Flask
-Flask-Session
-requests
+    // mongoose -> ODM library (object document mapping library)
+    // wraps mongoDB api

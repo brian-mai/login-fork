@@ -24,3 +24,5 @@ async function run() {
   }
 }
 run().catch(console.dir);
+
+// above code is not necessary with mongoose mongodb wrapper
