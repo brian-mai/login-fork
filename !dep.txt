@@ -4,4 +4,7 @@ npm install mongoose --save
     // mongoose -> ODM library (object document mapping library)
     // wraps mongoDB api
 npm install express
+npm install ejs
+    // templates
 npm install body-parser
+    // get form info
