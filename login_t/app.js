@@ -27,12 +27,20 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true } )
   .then(() => console.log('Connected to MongoDB'))
   .catch(error => console.error('Error connecting to MongoDB:', error));
 
-// Serve the HTML register form
+// Serve the HTML views
 app.get('/', (req, res) => {
+  res.render('login', { message: '' });
+});
+
+app.get('/login', (req, res) => {
+  res.render('login', { message: '' }); 
+});
+
+app.get('/register', (req, res) => {
   res.render('register', { message: '' });
 });
 
-// Handle form submission
+// Handle register
 app.post('/register', async (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
@@ -44,6 +52,20 @@ app.post('/register', async (req, res) => {
       res.render('register', { message: 'Registration error: ' + error.message });
   }
 });
+
+// Handle login
+app.post('/login', async (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  try {
+      await loginUser(username, password);
+      res.render('homepage');
+  } catch (error) {
+      res.render('login', { message: 'Username or password is incorrect.' });
+  }
+});
+
 
 // Start the Express.js server
 const PORT = 3000;
@@ -73,4 +95,17 @@ async function saveUser(username, password) {
       throw error;
   }
 }
+
+async function loginUser(username, password) {
+  try {
+    const matchUser = await User.findOne({ username, password });
+    if (matchUser == null) {
+      throw new Error("Incorrect login");
+    }
+  } catch (error) {
+    console.log('Error finding user:', error.message);
+    throw error;
+  }
+}
+
 
