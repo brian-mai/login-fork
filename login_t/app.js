@@ -5,6 +5,9 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const User = require('./models/accounts');
 
+// login session w/ cookies
+const jwtUtils = require('./jwtUtils');
+
 const bodyParser = require('body-parser');
 const path = require('path');
 const express = require('express');
@@ -81,7 +84,7 @@ async function saveUser(username, password) {
     if (existingUser) {
       throw new Error("Username already exists.");
     }
-
+    
     let newUser = new User({ 
       username: username, 
       password: password 
