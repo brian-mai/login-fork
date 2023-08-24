@@ -1,7 +1,7 @@
 {
   "name": "login_t",
   "version": "1.0.0",
-  "description": "mern stack test",
+  "description": "mern stack app",
   "main": "app.js",
   "author": "Brian Mai",
   "license": "ISC",

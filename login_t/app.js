@@ -85,6 +85,8 @@ async function saveUser(username, password) {
       throw new Error("Username already exists.");
     }
     
+    // generateToken({username: username, password: password});
+
     let newUser = new User({ 
       username: username, 
       password: password 
