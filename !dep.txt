@@ -8,3 +8,5 @@ npm install ejs
     // templates
 npm install body-parser
     // get form info
+npm install cookie-parser
+    // cookie session handler
