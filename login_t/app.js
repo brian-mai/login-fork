@@ -64,10 +64,27 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true } )
 
 // Serve the HTML views
 app.get('/', (req, res) => {
+  if (req.cookies.jwtToken) {
+    res.redirect('/profile');
+  }
+  else {
   res.render('login', { message: '' });
+  }
 });
 
 app.get('/login', (req, res) => {
+  const token = req.cookies.jwtToken;
+  if (token) {
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+      // Redirect to the profile page if the token is valid
+      res.redirect('/profile');
+      return; // Exit the function after redirection
+    } catch (error) {
+      console.log('Invalid token:', error.message);
+    }
+  }
+
   res.render('login', { message: '' }); 
 });
 
