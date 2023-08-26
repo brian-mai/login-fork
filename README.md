@@ -1,4 +1,4 @@
-template login page with MERN stack
+MERN stack application with misc. middleware 
 
 notes: 
 - MongoDB -> NoSQL database, users collection with { username: password } key-values
@@ -8,3 +8,4 @@ notes:
 - React -> build UI and deploy
 - Node.js -> backend (wraps V8 engine to compile js to machine in server)
 - nodemon -> auto refresh node app on file change (new server)
+- cookie-parser cookie handler to store JWT tokens for user sessions
