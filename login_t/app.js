@@ -92,6 +92,12 @@ app.get('/register', (req, res) => {
   res.render('register', { message: '' });
 });
 
+app.get('/logout', (req, res) => {
+  res.clearCookie('jwtToken');
+  res.redirect('/login');
+});
+
+
 // Handle register
 app.post('/register', async (req, res) => {
   const username = req.body.username;
